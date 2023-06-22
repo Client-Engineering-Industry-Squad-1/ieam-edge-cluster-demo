@@ -419,7 +419,7 @@ spec:
   fullnameOverride: ""
   image:
     pullPolicy: Always
-    repository: nginxdemos/hello
+    repository: nginxinc/nginx-unprivileged
     tag: latest
   imagePullSecrets: []
   nameOverride: ""
