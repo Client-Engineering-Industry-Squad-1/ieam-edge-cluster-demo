@@ -6,14 +6,10 @@
     "org": "$HZN_ORG_ID",
     "arch": "*",
     "serviceVersions": [
-      {
-        "version": "$SERVICE_VERSION",
-        "priority": {
-          "priority_value": 1,
-          "retries": 2,
-          "retry_durations": 60
+        {
+            "version": "$SERVICE_VERSION",
+            "priority":{}
         }
-      }
     ]
   },
   "properties": [

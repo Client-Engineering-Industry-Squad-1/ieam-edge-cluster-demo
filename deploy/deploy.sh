@@ -10,7 +10,7 @@ OPERATOR_IMAGE_BASE="docker.io/jennuineness/ieam-edge-operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 
 cd $DEPLOY_DIR/config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd $DEPLOY_DIR
-sed -i -e "s|{{IMAGE_BASE}}|$APP_IMAGE|" config/samples/demo.yaml
+sed -i -e "s|{{IMAGE_BASE}}|$APP_IMAGE_BASE|" config/samples/demo.yaml
 sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
 
 
@@ -29,4 +29,5 @@ hzn exchange service publish -f $DEPLOY_DIR/horizon/service.definition.json --ov
 sleep 3
 
 HZN_POLICY_NAME="samsung/policy-alb-ieam-edge-cluster-app"
+hzn exchange deployment removepolicy -f $HZN_POLICY_NAME
 hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
