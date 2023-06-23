@@ -20,10 +20,12 @@ make -C $DEPLOY_DIR docker-build docker-push IMG=$OPERATOR_IMAGE
 
 rm $DEPLOY_DIR/operator.tar.gz && rm -rf $DEPLOY_DIR/deploy && mkdir $DEPLOY_DIR/deploy
 kustomize build $DEPLOY_DIR/config/default > $DEPLOY_DIR/deploy/kustomize_manifests_operator.yaml
+sleep 3
 tar -C $DEPLOY_DIR/deploy -czf operator.tar.gz $DEPLOY_DIR
 
 # # rm operator.tar.gz && tar -czf operator.tar deploy && gzip operator.tar 
 hzn exchange service publish -fO $DEPLOY_DIR/horizon/service.definition.json
+sleep 3
 
 HZN_POLICY_NAME="samsung/policy-alb-ieam-edge-cluster-app"
 hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
