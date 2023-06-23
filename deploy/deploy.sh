@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source env.sh
+. env.sh
 
 APP_IMAGE_BASE=$1
 IMAGE_VERSION=$2
