@@ -14,11 +14,11 @@
     },
     "properties": [
         {
-            "name": "sampleapp",
-            "value": "$SERVICE_VERSION"
+            "name": "app",
+            "value": "demo"
         }
     ],
     "constraints": [
-        "sampleapp == $SERVICE_VERSION"
+        "app == demo"
     ]
 }
