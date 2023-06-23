@@ -11,7 +11,7 @@ spec:
     minReplicas: 1
     targetCPUUtilizationPercentage: 80
   fullnameOverride: ""
-  image: nginxinc/nginx-unprivileged:latest
+  image: nginx:latest
   imagePullPolicy: Always
   imagePullSecrets: []
   nameOverride: ""

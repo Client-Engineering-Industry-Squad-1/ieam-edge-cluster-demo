@@ -10,7 +10,7 @@ OPERATOR_IMAGE_BASE="docker.io/jennuineness/ieam-edge-operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 
 cd $DEPLOY_DIR/config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd $DEPLOY_DIR
-cd $DEPLOY_DIR/config/samples && kustomize edit set image nginxinc/nginx-unprivileged="$APP_IMAGE" && cd $DEPLOY_DIR
+cd $DEPLOY_DIR/config/samples && kustomize edit set image nginx="$APP_IMAGE" && cd $DEPLOY_DIR
 
 # Update Version in horizon/hzn.json if you make ANY change
 mv $DEPLOY_DIR/horizon/hzn.json /tmp/hzn.json

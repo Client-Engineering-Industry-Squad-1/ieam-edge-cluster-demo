@@ -4,6 +4,6 @@ resources:
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
-- name: nginxinc/nginx-unprivileged
+- name: nginx
   newName: docker.io/jennuinenes/ieam-edge-app
   newTag: latest
