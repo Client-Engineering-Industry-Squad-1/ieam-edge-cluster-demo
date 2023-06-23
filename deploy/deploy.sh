@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/home/itzuser/ieam-edge-cluster-demo/deploy
+cd ~/ieam-edge-cluster-demo/deploy
 . env.sh
 
 APP_IMAGE_BASE=$1
