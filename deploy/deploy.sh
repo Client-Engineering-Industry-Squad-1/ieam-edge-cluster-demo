@@ -24,7 +24,7 @@ sleep 3
 tar -C $DEPLOY_DIR/deploy -czf operator.tar.gz $DEPLOY_DIR
 
 # # rm operator.tar.gz && tar -czf operator.tar deploy && gzip operator.tar 
-hzn exchange service publish -fO $DEPLOY_DIR/horizon/service.definition.json
+hzn exchange service publish -f $DEPLOY_DIR/horizon/service.definition.json --overwrite
 sleep 3
 
 HZN_POLICY_NAME="samsung/policy-alb-ieam-edge-cluster-app"
