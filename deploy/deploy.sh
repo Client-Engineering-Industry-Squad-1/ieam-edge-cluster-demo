@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DEPLOY_DIR="/home/itzuser/ieam-edge-cluster-demo/deploy"
-. $DEPLOY_DIR/env.sh
+. ~/env.sh
 
 APP_IMAGE_BASE=$1
 IMAGE_VERSION=$2
