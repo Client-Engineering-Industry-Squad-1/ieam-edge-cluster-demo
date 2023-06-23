@@ -20,7 +20,7 @@ jq --arg IMAGE_VERSION "$IMAGE_VERSION" '.MetadataVars.SERVICE_VERSION |= $IMAGE
 
 make docker-build docker-push IMG=$OPERATOR_IMAGE
 
-rm operator.tar.gz & mkdir deploy
+rm operator.tar.gz & mkdir -p deploy
 kustomize build config/default > deploy/kustomize_manifests_operator.yaml
 tar -C deploy -czf operator.tar.gz . && rm -rf deploy
 
