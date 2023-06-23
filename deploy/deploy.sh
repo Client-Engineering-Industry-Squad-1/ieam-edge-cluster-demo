@@ -9,7 +9,7 @@ APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
 OPERATOR_IMAGE_BASE="docker.io/jennuineness/ieam-edge-operator"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 
-cd $DEPLOY_DIR && git stash
+cd $DEPLOY_DIR && git stash && git pull
 cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd ../..
 sed -i -e "s|{{APP_IMAGE_BASE}}|$APP_IMAGE_BASE|" config/samples/demo.yaml
 sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
