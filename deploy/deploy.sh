@@ -23,7 +23,7 @@ kustomize build $DEPLOY_DIR/config/default > $DEPLOY_DIR/deploy/kustomize_manife
 tar -C $DEPLOY_DIR/deploy -czf operator.tar.gz $DEPLOY_DIR
 
 # # rm operator.tar.gz && tar -czf operator.tar deploy && gzip operator.tar 
-hzn exchange service publish -f $DEPLOY_DIR/horizon/service.definition.json
+hzn exchange service publish -fO $DEPLOY_DIR/horizon/service.definition.json
 
 HZN_POLICY_NAME="samsung/policy-alb-ieam-edge-cluster-app"
 hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
