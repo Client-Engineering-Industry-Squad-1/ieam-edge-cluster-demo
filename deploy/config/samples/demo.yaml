@@ -11,7 +11,10 @@ spec:
     minReplicas: 1
     targetCPUUtilizationPercentage: 80
   fullnameOverride: ""
-  image: nginx:latest
+  image:
+    pullPolicy: Always
+    repository: {{IMAGE_BASE}}
+    tag: {{IMAGE_VERSION}}
   imagePullPolicy: Always
   imagePullSecrets: []
   nameOverride: ""
