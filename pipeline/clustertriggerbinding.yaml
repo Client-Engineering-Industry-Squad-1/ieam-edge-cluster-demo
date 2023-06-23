@@ -1,0 +1,34 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: ClusterTriggerBinding
+metadata:
+  creationTimestamp: '2023-06-22T22:40:05Z'
+  generation: 3
+  managedFields:
+    - apiVersion: triggers.tekton.dev/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec': {}
+      manager: Mozilla
+      operation: Update
+      time: '2023-06-22T22:40:05Z'
+    - apiVersion: triggers.tekton.dev/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:params': {}
+      manager: Mozilla
+      operation: Update
+      time: '2023-06-23T06:32:35Z'
+  name: github-release
+  resourceVersion: '7412463'
+  uid: 8f1a307b-0e46-40d0-a367-ca036ac1fee1
+spec:
+  params:
+    - name: releaseversion
+      value: $(body.release.tag_name)
+    - name: gitrepositoryurl
+      value: $(body.repository.url)
+    - name: contenttype
+      value: $(header.Content-Type)
+    - name: action
+      value: $(body.action)
