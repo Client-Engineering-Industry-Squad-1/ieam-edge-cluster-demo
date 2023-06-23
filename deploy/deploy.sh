@@ -20,8 +20,7 @@ make -C $DEPLOY_DIR docker-build docker-push IMG=$OPERATOR_IMAGE
 
 rm $DEPLOY_DIR/operator.tar.gz && rm -rf $DEPLOY_DIR/deploy && mkdir $DEPLOY_DIR/deploy
 kustomize build $DEPLOY_DIR/config/default > $DEPLOY_DIR/deploy/kustomize_manifests_operator.yaml
-sleep 3
-tar -C $DEPLOY_DIR/deploy -czf operator.tar.gz $DEPLOY_DIR
+cd $DEPLOY_DIR && tar -C deploy -czf operator.tar.gz .
 
 # # rm operator.tar.gz && tar -czf operator.tar deploy && gzip operator.tar 
 hzn exchange service publish -f $DEPLOY_DIR/horizon/service.definition.json --overwrite
