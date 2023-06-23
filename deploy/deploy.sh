@@ -30,4 +30,5 @@ sleep 3
 
 HZN_POLICY_NAME="samsung/policy-alb-ieam-edge-cluster-app"
 hzn exchange deployment removepolicy -f $HZN_POLICY_NAME
+sleep 5
 hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
