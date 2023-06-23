@@ -13,7 +13,7 @@ spec:
   fullnameOverride: ""
   image:
     pullPolicy: Always
-    repository: {{IMAGE_BASE}}
+    repository: {{APP_IMAGE_BASE}}
     tag: {{IMAGE_VERSION}}
   imagePullPolicy: Always
   imagePullSecrets: []
