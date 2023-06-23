@@ -2,17 +2,20 @@
 
 source env.sh
 
-IMAGE_BASE=$1
+APP_IMAGE_BASE=$1
 IMAGE_VERSION=$2
-OPERATOR_IMAGE_PATH=$IMAGE_BASE:$IMAGE_VERSION
+APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
+OPERATOR_IMAGE_BASE="docker.io/jennuineness/ieam-edge-operator"
+OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 
-cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE_PATH" && cd ../..
+cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd ../..
+cd config/samples && kustomize edit set image nginxinc/nginx-unprivileged="$APP_IMAGE" && cd ../..
 
 # Update Version in horizon/hzn.json if you make ANY change
 mv horizon/hzn.json /tmp/hzn.json
 jq --arg IMAGE_VERSION "$IMAGE_VERSION" '.MetadataVars.SERVICE_VERSION |= $IMAGE_VERSION' /tmp/hzn.json > horizon/hzn.json
 
-make docker-build docker-push IMG=$OPERATOR_IMAGE_PATH
+make docker-build docker-push IMG=$OPERATOR_IMAGE
 
 rm operator.tar.gz && rm -rf deploy && mkdir deploy
 kustomize build config/default > deploy/kustomize_manifests_operator.yaml
