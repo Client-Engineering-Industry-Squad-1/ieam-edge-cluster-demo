@@ -2,7 +2,7 @@
   "HZN_ORG_ID": "samsung",
   "MetadataVars": {
     "DOCKER_IMAGE_BASE": "",
-    "SERVICE_NAME": "alb-ieam-demo",
+    "SERVICE_NAME": "alb-ieam-edge-demo",
     "SERVICE_VERSION": "1.0.0"
   }
 }
