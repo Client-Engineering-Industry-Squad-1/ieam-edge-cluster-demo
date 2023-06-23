@@ -1,5 +1,7 @@
 #! /bin/bash
 
+source env.sh
+
 IMAGE_BASE=$1
 IMAGE_VERSION=$2
 OPERATOR_IMAGE_PATH=$IMAGE_BASE:$IMAGE_VERSION
