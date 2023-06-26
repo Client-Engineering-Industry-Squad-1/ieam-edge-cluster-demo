@@ -1,23 +1,8 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  creationTimestamp: '2023-06-22T22:40:55Z'
-  generation: 8
-  managedFields:
-    - apiVersion: triggers.tekton.dev/v1alpha1
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:spec':
-          .: {}
-          'f:params': {}
-          'f:resourcetemplates': {}
-      manager: Mozilla
-      operation: Update
-      time: '2023-06-23T06:39:37Z'
-  name: trigger-template-ieam-edge-cluster-demo-1vnor9
-  namespace: images
-  resourceVersion: '7419371'
-  uid: af73e5ee-f143-4404-8ca5-d555a09e453a
+  name: trigger-template-ieam-edge-pipeline
+  namespace: openshift-pipelines
 spec:
   params:
     - name: releaseversion
@@ -30,19 +15,19 @@ spec:
       metadata:
         annotations:
           pipeline.openshift.io/started-by: 'kube:admin'
-        generateName: ieam-edge-cluster-demo-
+        generateName: ieam-edge-pipeline-
         labels:
-          app.kubernetes.io/instance: ieam-edge-cluster-demo
-          app.kubernetes.io/name: ieam-edge-cluster-demo
+          app.kubernetes.io/instance: ieam-edge-pipeline
+          app.kubernetes.io/name: ieam-edge-pipeline
           operator.tekton.dev/operand-name: openshift-pipelines-addons
           pipeline.openshift.io/strategy: docker
           pipeline.openshift.io/type: kubernetes
-          tekton.dev/pipeline: ieam-edge-cluster-demo
+          tekton.dev/pipeline: ieam-edge-pipeline
         namespace: images
       spec:
         params:
           - name: APP_NAME
-            value: ieam-edge-cluster-demo
+            value: ieam-edge-app
           - name: GIT_REPO
             value: >-
               https://github.com/Client-Engineering-Industry-Squad-1/ieam-edge-cluster-demo
@@ -57,7 +42,7 @@ spec:
           - name: WEBHOOK_ACTION
             value: $(tt.params.action)
         pipelineRef:
-          name: ieam-edge-cluster-demo
+          name: ieam-edge-pipeline
         resources: []
         status: null
         workspaces:
