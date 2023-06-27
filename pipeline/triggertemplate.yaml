@@ -2,7 +2,7 @@ apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
   name: trigger-template-ieam-edge-pipeline
-  namespace: openshift-pipelines
+  namespace: edge-pipeline
 spec:
   params:
     - name: releaseversion
@@ -26,8 +26,6 @@ spec:
         namespace: images
       spec:
         params:
-          - name: APP_NAME
-            value: ieam-edge-app
           - name: GIT_REPO
             value: >-
               https://github.com/Client-Engineering-Industry-Squad-1/ieam-edge-cluster-demo
@@ -48,7 +46,7 @@ spec:
         workspaces:
           - name: workspace
             persistentVolumeClaim:
-              claimName: pvc-b5c7693e94
+              claimName: workspace-pvc
           - name: credentials
             secret:
               secretName: remote-ssh-secret

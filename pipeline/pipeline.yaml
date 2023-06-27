@@ -8,12 +8,9 @@ metadata:
     pipeline.openshift.io/strategy: docker
     pipeline.openshift.io/type: kubernetes
   name: ieam-edge-pipeline
-  namespace: openshift-pipelines
+  namespace: edge-pipeline
 spec:
   params:
-    - default: ieam-edge-pipeline
-      name: APP_NAME
-      type: string
     - default: >-
         https://github.com/Client-Engineering-Industry-Squad-1/ieam-edge-cluster-demo
       name: GIT_REPO
@@ -75,7 +72,7 @@ spec:
       workspaces:
         - name: source
           workspace: workspace
-    - name: deploy
+    - name: publish-service
       params:
         - name: HOST
           value: 150.238.132.77

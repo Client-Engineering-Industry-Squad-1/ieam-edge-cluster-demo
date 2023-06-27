@@ -1,0 +1,25 @@
+---
+- name: Connect to Android phone
+  hosts: mobile
+  remote_user: root
+  gather_facts: false
+  tasks:
+    - name: Run Docker container
+      community.docker.docker_container:
+        name: horizon-agent
+        image: na.artifactory.swg-devops.com/igm-ibm-gsc-team-docker-local/marvinimages/samsung:Horizon-Agent
+        ports:
+          - "8510:8510"
+        volumes:
+          - /data/var/user/docker.sock:/var/run/docker.sock
+          - /data/var/tmp/horizon/horizon-android1:/data/var/tmp/horizon/horizon-agent
+          - /data/var/horizon:/data/var/horizon
+        restart_policy: always
+    - name: Run docker command
+      community.docker.docker_container_exec:
+        container: horizon-agent
+        argv:
+          - /bin/bash
+          - "-c"
+          - "echo '172.28.40.110 cp-console.apps.hub2.ind.ibm.iel' >> /etc/hosts && hzn register"
+      register: result

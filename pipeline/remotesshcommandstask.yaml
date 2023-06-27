@@ -9,7 +9,7 @@ metadata:
     tekton.dev/platforms: linux/amd64
     tekton.dev/tags: 'ssh, ssh remote'
   name: remote-ssh-commands
-  namespace: openshift-pipelines
+  namespace: edge-pipeline
   labels:
     app.kubernetes.io/version: '0.1'
 spec:

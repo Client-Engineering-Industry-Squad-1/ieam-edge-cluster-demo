@@ -2,7 +2,7 @@ apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
   name: event-listener-ieam-app
-  namespace: openshift-pipelines
+  namespace: edge-pipeline
 spec:
   serviceAccountName: pipeline
   triggers:
