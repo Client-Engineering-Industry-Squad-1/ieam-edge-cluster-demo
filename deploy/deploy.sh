@@ -26,6 +26,6 @@ tar -C deploy -czf operator.tar.gz . && rm -rf deploy
 
 hzn exchange service publish -f $DEPLOY_DIR/horizon/service.definition.json --overwrite
 HZN_POLICY_NAME="albertsonsce/policy-alb-ieam-edge-cluster-app"
-# hzn exchange deployment removepolicy -f $HZN_POLICY_NAME
-# sleep 10
-# hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
+hzn exchange deployment removepolicy -f $HZN_POLICY_NAME
+sleep 10
+hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
