@@ -14,8 +14,8 @@
   },
   "properties": [
     {
-      "name": "app",
-      "value": "store"
+      "name": "device-type",
+      "value": "edge-cluster"
     }
   ],
   "constraints": ["app == store"]

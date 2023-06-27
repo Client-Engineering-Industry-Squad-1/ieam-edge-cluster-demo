@@ -24,9 +24,8 @@ rm operator.tar.gz & rm -rf deploy && mkdir -p deploy
 kustomize build config/default > deploy/kustomize_manifests_operator.yaml
 tar -C deploy -czf operator.tar.gz . && rm -rf deploy
 
-# # rm operator.tar.gz && tar -czf operator.tar deploy && gzip operator.tar 
 hzn exchange service publish -f $DEPLOY_DIR/horizon/service.definition.json --overwrite
 HZN_POLICY_NAME="albertsonsce/policy-alb-ieam-edge-cluster-app"
-hzn exchange deployment removepolicy -f $HZN_POLICY_NAME
-sleep 10
-hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
+# hzn exchange deployment removepolicy -f $HZN_POLICY_NAME
+# sleep 10
+# hzn exchange deployment addpolicy -f $DEPLOY_DIR/horizon/service.policy.json $HZN_POLICY_NAME
