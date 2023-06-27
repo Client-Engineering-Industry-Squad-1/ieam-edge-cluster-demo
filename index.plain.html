@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Albertsons Homepage</title>
+    <title>Albertsons Customer Offers</title>
     <style>
         :root {
             --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -72,7 +72,7 @@
 
         h2 {
             font-size: 20px;
-            color: var(--color-black);
+            color: var(--color-white);
         }
 
         footer {
@@ -86,6 +86,31 @@
             min-height: 650px;
             object-fit: cover;
             width: 100%;
+        }
+
+        .offers {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .offer {
+            flex: 1;
+            margin-right: 10px;
+            padding: 10px;
+            background-color: var(--color-gray-dark);
+            color: var(--color-white);
+            border-radius: 5px;
+        }
+
+        .offer h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .offer p {
+            font-size: 14px;
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -105,6 +130,17 @@
     </nav>
 
     <main>
+        <div class="offers">
+            <div class="offer">
+                <h3>Weekly Specials</h3>
+                <p>Check out our weekly specials and save big on your favorite products.</p>
+            </div>
+            <div class="offer">
+                <h3>Online Coupons</h3>
+                <p>Clip digital coupons online and redeem them at checkout for extra savings.</p>
+            </div>
+        </div>
+
         <h2>Welcome to Albertsons</h2>
         <p>Discover fresh groceries and exceptional quality at Albertsons. Explore our wide range of products at great prices.</p>
 
