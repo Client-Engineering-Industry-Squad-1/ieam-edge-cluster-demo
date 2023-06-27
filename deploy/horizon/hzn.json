@@ -1,5 +1,5 @@
 {
-  "HZN_ORG_ID": "samsung",
+  "HZN_ORG_ID": "albertsonsce",
   "MetadataVars": {
     "DOCKER_IMAGE_BASE": "",
     "SERVICE_NAME": "alb-ieam-edge-demo",
