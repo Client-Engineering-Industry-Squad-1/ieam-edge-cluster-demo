@@ -15,8 +15,8 @@
   "properties": [
     {
       "name": "app",
-      "value": "demo"
+      "value": "store"
     }
   ],
-  "constraints": ["app == demo"]
+  "constraints": ["app == store"]
 }
