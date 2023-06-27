@@ -6,7 +6,7 @@ DEPLOY_DIR="/home/itzuser/ieam-edge-cluster-demo/deploy"
 APP_IMAGE_BASE=$1
 IMAGE_VERSION=$2
 APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
-OPERATOR_IMAGE_BASE="docker.io/jennuineness/ieam-edge-operator"
+OPERATOR_IMAGE_BASE="default-route-openshift-image-registry.apps.ocp-55000351na-ooqg.cloud.techzone.ibm.com/edge-images/ieam-edge-app"
 OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
 
 cd $DEPLOY_DIR && git stash && git pull

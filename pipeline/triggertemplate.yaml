@@ -32,7 +32,7 @@ spec:
           - name: GIT_REVISION
             value: main
           - name: IMAGE_BASE
-            value: docker.io/jennuineness/ieam-edge-app
+            value: default-route-openshift-image-registry.apps.ocp-55000351na-ooqg.cloud.techzone.ibm.com/edge-images/ieam-edge-app
           - name: PATH_CONTEXT
             value: .
           - name: IMAGE_VERSION

@@ -29,7 +29,7 @@ BUNDLE_METADATA_OPTS ?= $(BUNDLE_CHANNELS) $(BUNDLE_DEFAULT_CHANNEL)
 #
 # For example, running 'make bundle-build bundle-push catalog-build catalog-push' will build and push both
 # example.com/sample-app-bundle:$VERSION and example.com/sample-app-catalog:$VERSION.
-IMAGE_TAG_BASE ?= docker.io/jennuineness/sample-app
+IMAGE_TAG_BASE ?= default-route-openshift-image-registry.apps.ocp-55000351na-ooqg.cloud.techzone.ibm.com/edge-images/ieam-edge-app
 
 # BUNDLE_IMG defines the image:tag used for the bundle.
 # You can use it as an arg. (E.g make bundle-build BUNDLE_IMG=<some-registry>/<project-name-bundle>:<tag>)

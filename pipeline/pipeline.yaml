@@ -18,7 +18,7 @@ spec:
     - default: main
       name: GIT_REVISION
       type: string
-    - default: docker.io/jennuineness/ieam-edge-app
+    - default: default-route-openshift-image-registry.apps.ocp-55000351na-ooqg.cloud.techzone.ibm.com/edge-images/ieam-edge-app
       name: IMAGE_BASE
       type: string
     - default: .
