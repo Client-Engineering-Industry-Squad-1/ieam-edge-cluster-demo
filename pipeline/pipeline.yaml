@@ -85,7 +85,7 @@ spec:
             #! /bin/bash
 
 
-            sh ieam-edge-pipeline/deploy/deploy.sh $(params.IMAGE_BASE)
+            sh ieam-edge-cluster-demo/deploy/deploy.sh $(params.IMAGE_BASE)
             $(params.IMAGE_VERSION)
         - name: USE_INSECURE_CIPHER
           value: 'false'
