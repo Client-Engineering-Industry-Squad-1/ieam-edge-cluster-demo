@@ -6,12 +6,17 @@
     "org": "$HZN_ORG_ID",
     "arch": "*",
     "serviceVersions": [
-      {
-        "version": "$SERVICE_VERSION",
-        "priority": {}
-      }
+        {
+            "version": "$SERVICE_VERSION",
+            "priority":{}
+        }
     ]
   },
-  "properties": [{}],
+  "properties": [
+    {
+      "name": "device-type",
+      "value": "store-cluster"
+    }
+  ],
   "constraints": ["device-type == store-cluster", "store-brand == albertsons"]
 }
