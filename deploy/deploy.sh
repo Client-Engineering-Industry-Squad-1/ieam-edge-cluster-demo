@@ -7,7 +7,7 @@ APP_IMAGE_BASE=$1
 IMAGE_VERSION=$2
 APP_IMAGE=$APP_IMAGE_BASE:$IMAGE_VERSION
 OPERATOR_IMAGE_BASE="docker.io/appimage/ieam-edge-operator"
-OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:$IMAGE_VERSION
+OPERATOR_IMAGE=$OPERATOR_IMAGE_BASE:1.0.28
 
 cd $DEPLOY_DIR && git stash && git pull
 cd config/manager && kustomize edit set image controller="$OPERATOR_IMAGE" && cd ../..
