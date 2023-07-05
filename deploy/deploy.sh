@@ -16,7 +16,8 @@ sed -i -e "s|{{IMAGE_VERSION}}|$IMAGE_VERSION|" config/samples/demo.yaml
 
 # Update Version in horizon/hzn.json if you make ANY change
 mv horizon/hzn.json /tmp/hzn.json
-jq  --arg APP_IMAGE_BASE "$APP_IMAGE_BASE" '.MetadataVars.DOCKER_IMAGE_BASE |= $APP_IMAGE_BASE' --arg IMAGE_VERSION "$IMAGE_VERSION" '.MetadataVars.SERVICE_VERSION |= $IMAGE_VERSION' /tmp/hzn.json > horizon/hzn.json
+jq --arg APP_IMAGE_BASE "$APP_IMAGE_BASE" '.MetadataVars.DOCKER_IMAGE_BASE |= $APP_IMAGE_BASE' /tmp/hzn0.json > /tmp/hzn1.json
+jq --arg IMAGE_VERSION "$IMAGE_VERSION" '.MetadataVars.SERVICE_VERSION |= $IMAGE_VERSION' /tmp/hzn1.json > horizon/hzn.json
 
 make docker-build docker-push IMG=$OPERATOR_IMAGE
 
