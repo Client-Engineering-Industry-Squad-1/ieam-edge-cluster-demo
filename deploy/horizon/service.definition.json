@@ -19,5 +19,16 @@
     ],
     "clusterDeployment": {
         "operatorYamlArchive": "../operator.tar.gz"
+    },
+    "deployment": {
+        "services": {
+            "$SERVICE_NAME": {
+                "secrets": {
+                    "ServiceNowApiKey": {
+                        "description": "The API key for Service Now"
+                    }
+                }
+            }
+        }
     }
 }
