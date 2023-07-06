@@ -18,5 +18,14 @@
       "value": "store-cluster"
     }
   ],
-  "constraints": ["device-type == store-cluster AND store-brand == albertsons"]
+  "constraints": ["device-type == store-cluster AND store-brand == albertsons"],
+  "secretBinding": [
+    {
+      "serviceUrl": "$SERVICE_NAME",
+      "serviceOrgid": "$HZN_ORG_ID",
+      "serviceArch": "$ARCH",
+      "serviceVersionRange": "[0.0.0,INFINITY)",
+      "secrets": [{ "ServiceNowApiKey": "ServiceNowApiKey" }]
+    }
+  ]
 }
