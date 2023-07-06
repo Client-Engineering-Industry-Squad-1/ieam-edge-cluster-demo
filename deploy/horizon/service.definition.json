@@ -23,7 +23,7 @@
     "deployment": {
         "services": {
             "$SERVICE_NAME": {
-                "image": "${DOCKER_IMAGE_BASE}:$SERVICE_VERSION",
+                "image": "${DOCKER_IMAGE_BASE}_$ARCH:$SERVICE_VERSION",
                 "secrets": {
                     "ServiceNowApiKey": {
                         "description": "The API key for Service Now"
