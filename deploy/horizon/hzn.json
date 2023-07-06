@@ -1,7 +1,7 @@
 {
   "HZN_ORG_ID": "albertsonsce",
   "MetadataVars": {
-    "DOCKER_IMAGE_BASE": "",
+    "DOCKER_IMAGE_BASE": "docker.io/appimage/ieam-edge-operator",
     "SERVICE_NAME": "alb-ieam-edge-demo",
     "SERVICE_VERSION": "1.0.0"
   }
