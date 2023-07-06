@@ -1,35 +1,35 @@
 {
-    "org": "$HZN_ORG_ID",
-    "label": "$SERVICE_NAME for $ARCH",
-    "description": "",
-    "public": false,
-    "documentation": "",
-    "url": "$SERVICE_NAME",
-    "version": "$SERVICE_VERSION",
-    "arch": "$ARCH",
-    "sharable": "multiple",
-    "requiredServices": [],
-    "userInput": [
-        {
-            "name": "",
-            "label": "",
-            "type": "",
-            "defaultValue": ""
-        }
-    ],
-    "clusterDeployment": {
-        "operatorYamlArchive": "../operator.tar.gz"
-    },
-    "deployment": {
-        "services": {
-            "$SERVICE_NAME": {
-                "image": "${DOCKER_IMAGE_BASE}:$SERVICE_VERSION",
-                "secrets": {
-                    "ServiceNowApiKey": {
-                        "description": "The API key for Service Now"
-                    }
-                }
-            }
-        }
+  "org": "$HZN_ORG_ID",
+  "label": "$SERVICE_NAME for $ARCH",
+  "description": "",
+  "public": false,
+  "documentation": "",
+  "url": "$SERVICE_NAME",
+  "version": "$SERVICE_VERSION",
+  "arch": "$ARCH",
+  "sharable": "multiple",
+  "requiredServices": [],
+  "userInput": [
+    {
+      "name": "",
+      "label": "",
+      "type": "",
+      "defaultValue": ""
     }
+  ],
+  "clusterDeployment": {
+    "operatorYamlArchive": "../operator.tar.gz"
+  },
+  "deployment": {
+    "services": {
+      "$SERVICE_NAME": {
+        "image": "${DOCKER_IMAGE_BASE}:$SERVICE_VERSION",
+        "secrets": {
+          "ServiceNowApiKey": {
+            "description": "The API key for Service Now"
+          }
+        }
+      }
+    }
+  }
 }

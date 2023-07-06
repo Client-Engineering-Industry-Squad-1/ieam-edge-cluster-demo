@@ -6,10 +6,10 @@
     "org": "$HZN_ORG_ID",
     "arch": "*",
     "serviceVersions": [
-        {
-            "version": "$SERVICE_VERSION",
-            "priority":{}
-        }
+      {
+        "version": "$SERVICE_VERSION",
+        "priority": {}
+      }
     ]
   },
   "properties": [
@@ -24,10 +24,8 @@
       "serviceUrl": "$SERVICE_NAME",
       "serviceOrgid": "$HZN_ORG_ID",
       "serviceArch": "$ARCH",
-      "serviceVersionRange": "[0.0.0,INFINITY)", 
-      "secrets": [
-        {"ServiceNowApiKey": "ServiceNowApiKey"}
-      ]
+      "serviceVersionRange": "[0.0.0,INFINITY)",
+      "secrets": [{ "ServiceNowApiKey": "ServiceNowApiKey" }]
     }
-]
+  ]
 }
