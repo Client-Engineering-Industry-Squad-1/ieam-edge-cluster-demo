@@ -18,5 +18,5 @@
       "value": "store-cluster"
     }
   ],
-  "constraints": ["device-type == store-cluster AND store-brand == generic-store"]
+  "constraints": ["device-type == store-cluster AND store-brand == grocery-store"]
 }
