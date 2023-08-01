@@ -2,8 +2,8 @@
 - [ieam-edge-cluster-demo](#ieam-edge-cluster-demo)
   - [Pre-Requisites](#pre-requisites)
   - [Setting up Linux VM](#setting-up-linux-vm)
-  - [Setting up Secret in IEAM](#setting-up-secret-in-ieam)
   - [Installing OpenShift Pipelines](#installing-openshift-pipelines)
+  - [Setting up Namespace](#setting-up-namespace)
   - [Creating the Pipeline](#creating-the-pipeline)
 
 ## Pre-Requisites
@@ -24,17 +24,22 @@
   * `git clone <YOUR_FORKED_IEAM_EDGE_CLUSTER_DEMO_REPO`
 * Create a `env.sh` file in user home (`~`) directory based on the `example-env.sh` file in this project
   * Make sure your `agent-install.crt` file is saved in the VM and set the variable `HZN_MGMT_HUB_CERT_PATH` to the file path of the crt
-
-## Setting up Secret in IEAM
-* Create mock secret in IEAM
-  * `hzn sm secret add --secretKey ServiceNowApiKey --secretDetail secret-value ServiceNowApiKey`
+* Ensure user can run commands without sudo
+  * Run `docker ps`
+    * If you get a `Got permission denied while trying to connect to the Docker daemon socket...` error, then follow instructions in this [document](https://docs.docker.com/engine/install/linux-postinstall/)
+* Log into the image registry where you will be pushing your operator and app images
+  * `docker login <YOUR_IMAGE_REGISTRY> -u <USERNAME>`
 
 ## Installing OpenShift Pipelines
 * Install OpenShift Pipelines using the Operator by following the [official documentation](https://docs.openshift.com/container-platform/4.11/cicd/pipelines/installing-pipelines.html#op-installing-pipelines-operator-in-web-console_installing-pipelines)
 
+## Setting up Namespace
+* Create a namespace called `ieam-demo`
+* Create an image pull Secret called `docker-registry` for the container registry where the application and operator image will be pulled
+
 ## Creating the Pipeline
 1. Log into the OpenShift cluster where OpenShift Pipelines is installed
 2. Create a namespace called `openshift-pipelines`. We will be using this namespace for all other steps.
-3. Create a image pull Secret called `docker-registry` where the application and operator image will be uploaded
+3. Create an image pull Secret called `docker-registry` where the application and operator image will be uploaded
 4. Add the secret to the `pipeline` Service Account
-5. 
+
