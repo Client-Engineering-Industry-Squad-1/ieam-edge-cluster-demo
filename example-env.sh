@@ -1,0 +1,6 @@
+export HZN_AGENT_PORT=8510
+export HZN_MGMT_HUB_CERT_PATH=""
+export HZN_EXCHANGE_URL=""
+export HZN_FSS_CSSURL=""
+export HZN_ORG_ID=""
+export HZN_EXCHANGE_USER_AUTH=""
