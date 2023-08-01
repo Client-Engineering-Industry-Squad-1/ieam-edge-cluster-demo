@@ -2,6 +2,7 @@
 - [ieam-edge-cluster-demo](#ieam-edge-cluster-demo)
   - [Pre-Requisites](#pre-requisites)
   - [Setting up Linux VM](#setting-up-linux-vm)
+  - [Setting up Secret in IEAM](#setting-up-secret-in-ieam)
   - [Installing OpenShift Pipelines](#installing-openshift-pipelines)
   - [Creating the Pipeline](#creating-the-pipeline)
 
@@ -23,6 +24,10 @@
   * `git clone <YOUR_FORKED_IEAM_EDGE_CLUSTER_DEMO_REPO`
 * Create a `env.sh` file in user home (`~`) directory based on the `example-env.sh` file in this project
   * Make sure your `agent-install.crt` file is saved in the VM and set the variable `HZN_MGMT_HUB_CERT_PATH` to the file path of the crt
+
+## Setting up Secret in IEAM
+* Create mock secret in IEAM
+  * `hzn sm secret add --secretKey ServiceNowApiKey --secretDetail secret-value ServiceNowApiKey`
 
 ## Installing OpenShift Pipelines
 * Install OpenShift Pipelines using the Operator by following the [official documentation](https://docs.openshift.com/container-platform/4.11/cicd/pipelines/installing-pipelines.html#op-installing-pipelines-operator-in-web-console_installing-pipelines)

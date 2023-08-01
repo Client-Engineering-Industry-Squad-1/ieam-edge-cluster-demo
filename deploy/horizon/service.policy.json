@@ -18,14 +18,5 @@
       "value": "store-cluster"
     }
   ],
-  "constraints": ["device-type == store-cluster AND store-brand == generic-store"],
-  "secretBinding": [
-    {
-      "serviceUrl": "$SERVICE_NAME",
-      "serviceOrgid": "$HZN_ORG_ID",
-      "serviceArch": "$ARCH",
-      "serviceVersionRange": "[0.0.0,INFINITY)",
-      "secrets": [{ "ServiceNowApiKey": "ServiceNowApiKey" }]
-    }
-  ]
+  "constraints": ["device-type == store-cluster AND store-brand == generic-store"]
 }

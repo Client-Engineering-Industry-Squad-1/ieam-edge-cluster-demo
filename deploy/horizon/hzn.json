@@ -2,7 +2,7 @@
   "HZN_ORG_ID": "ceorg",
   "MetadataVars": {
     "DOCKER_IMAGE_BASE": "docker.io/appimage/ieam-edge-operator",
-    "SERVICE_NAME": "store-customer-offers-svc",
+    "SERVICE_NAME": "store-customer-offers",
     "SERVICE_VERSION": "1.0.0"
   }
 }
