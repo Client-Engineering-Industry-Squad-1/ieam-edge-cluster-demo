@@ -100,5 +100,5 @@ spec:
             memory: 64Mi
       serviceAccountName: controller-manager
       imagePullSecrets: 
-        - docker-registry
+        - name: docker-registry
       terminationGracePeriodSeconds: 10
