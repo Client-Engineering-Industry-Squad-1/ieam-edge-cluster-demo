@@ -1,25 +1,103 @@
-kind: PersistentVolumeClaim
-apiVersion: v1
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
 metadata:
-  name: workspace-pvc
+  name: ieam-edge-pipeline
   namespace: openshift-pipelines
 spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: managed-nfs-storage
-  volumeMode: Filesystem
+  params:
+    - default: >-
+        https://github.com/Client-Engineering-Industry-Squad-1/ieam-edge-cluster-demo
+      name: GIT_REPO
+      type: string
+    - default: main
+      name: GIT_REVISION
+      type: string
+    - default: docker.io/appimage/ieam-edge-app
+      name: IMAGE_BASE
+      type: string
+    - default: .
+      name: PATH_CONTEXT
+      type: string
+    - default: latest
+      name: IMAGE_VERSION
+      type: string
+    - name: WEBHOOK_ACTION
+      type: string
+  tasks:
+    - name: fetch-repository
+      params:
+        - name: url
+          value: $(params.GIT_REPO)
+        - name: revision
+          value: $(params.GIT_REVISION)
+        - name: subdirectory
+          value: ''
+        - name: deleteExisting
+          value: 'true'
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
+      when:
+        - input: released
+          operator: in
+          values:
+            - $(params.WEBHOOK_ACTION)
+      workspaces:
+        - name: output
+          workspace: workspace
+    - name: build
+      params:
+        - name: IMAGE
+          value: '$(params.IMAGE_BASE):$(params.IMAGE_VERSION)'
+        - name: TLSVERIFY
+          value: 'false'
+        - name: CONTEXT
+          value: $(params.PATH_CONTEXT)
+      runAfter:
+        - fetch-repository
+      taskRef:
+        kind: ClusterTask
+        name: buildah
+      when:
+        - input: released
+          operator: in
+          values:
+            - $(params.WEBHOOK_ACTION)
+      workspaces:
+        - name: source
+          workspace: workspace
+        - name: dockerconfig
+          workspace: docker-registry
+    - name: publish-service
+      params:
+        - name: HOST
+          value: 150.238.132.61
+        - name: USERNAME
+          value: itzuser
+        - name: PORT
+          value: '2223'
+        - name: SSH_SCRIPT
+          value: |-
+            #! /bin/bash
 
----
-
-kind: Secret
-apiVersion: v1
-metadata:
-  name: docker-registry
-  namespace: openshift-pipelines
-data:
-  .dockerconfigjson: >-
-    eyJhdXRocyI6eyJkb2NrZXIuaW8iOnsidXNlcm5hbWUiOiJhcHBpbWFnZSIsInBhc3N3b3JkIjoiM0N5dnohLTZzcWlMUHlibnU5OUIydSIsImF1dGgiOiJZWEJ3YVcxaFoyVTZNME41ZG5vaExUWnpjV2xNVUhsaWJuVTVPVUl5ZFE9PSIsImVtYWlsIjoiIn19fQ==
-type: kubernetes.io/dockerconfigjson
+            cd ieam-edge-cluster-demo && git stash && git pull
+            sh deploy/deploy.sh $(params.IMAGE_BASE) $(params.IMAGE_VERSION)
+        - name: USE_INSECURE_CIPHER
+          value: 'false'
+      runAfter:
+        - build
+      taskRef:
+        kind: Task
+        name: remote-ssh-commands
+      when:
+        - input: released
+          operator: in
+          values:
+            - $(params.WEBHOOK_ACTION)
+      workspaces:
+        - name: credentials
+          workspace: credentials
+  workspaces:
+    - name: workspace
+    - name: credentials
+    - name: docker-registry

@@ -1,8 +1,26 @@
 apiVersion: triggers.tekton.dev/v1alpha1
+kind: ClusterTriggerBinding
+metadata:
+  name: github-release
+  namespace: openshift-pipelines
+spec:
+  params:
+    - name: releaseversion
+      value: $(body.release.tag_name)
+    - name: gitrepositoryurl
+      value: $(body.repository.url)
+    - name: contenttype
+      value: $(header.Content-Type)
+    - name: action
+      value: $(body.action)
+
+---
+
+apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: trigger-template-ieam-edge-pipeline
-  namespace: edge-pipeline
+  name: trigger-template-ieam-edge-pipeline-n9ybc1
+  namespace: openshift-pipelines
 spec:
   params:
     - name: releaseversion
@@ -13,17 +31,10 @@ spec:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        annotations:
-          pipeline.openshift.io/started-by: 'kube:admin'
         generateName: ieam-edge-pipeline-
         labels:
-          app.kubernetes.io/instance: ieam-edge-pipeline
-          app.kubernetes.io/name: ieam-edge-pipeline
-          operator.tekton.dev/operand-name: openshift-pipelines-addons
-          pipeline.openshift.io/strategy: docker
-          pipeline.openshift.io/type: kubernetes
           tekton.dev/pipeline: ieam-edge-pipeline
-        namespace: images
+        namespace: openshift-pipelines
       spec:
         params:
           - name: GIT_REPO
@@ -50,3 +61,25 @@ spec:
           - name: credentials
             secret:
               secretName: remote-ssh-secret
+          - name: docker-registry
+            secret:
+              secretName: docker-registry
+
+
+---
+
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: event-listener-ieam-edge-pipeline
+  namespace: openshift-pipelines
+spec:
+  namespaceSelector: {}
+  resources: {}
+  serviceAccountName: pipeline
+  triggers:
+    - bindings:
+        - kind: ClusterTriggerBinding
+          ref: github-release
+      template:
+        ref: trigger-template-ieam-edge-pipeline-n9ybc1

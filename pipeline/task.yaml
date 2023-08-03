@@ -1,17 +1,8 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  annotations:
-    openshift.io/installed-from: tektonhub
-    tekton.dev/categories: Developer Tools
-    tekton.dev/displayName: ssh remote commands
-    tekton.dev/pipelines.minVersion: 0.12.1
-    tekton.dev/platforms: linux/amd64
-    tekton.dev/tags: 'ssh, ssh remote'
   name: remote-ssh-commands
-  namespace: edge-pipeline
-  labels:
-    app.kubernetes.io/version: '0.1'
+  namespace: openshift-pipelines
 spec:
   description: >-
     The following task can be used to execute commands on remote machine.
