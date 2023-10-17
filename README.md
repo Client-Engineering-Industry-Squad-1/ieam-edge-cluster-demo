@@ -40,7 +40,7 @@
 
 ## Creating the Pipeline
 1. Log into the OpenShift cluster where OpenShift Pipelines is installed
-2. Create a namespace called `openshift-pipelines`. We will be using this namespace for all other steps.
+2. Look for `openshift-pipelines` namespace, we will be using this namespace for all other steps.
 3. Create an image pull Secret called `docker-registry` where the application and operator image will be uploaded
   * Should be the same login info created in [Setting up Namespace](#setting-up-namespace)
 4. Add the secret to the `pipeline` Service Account
